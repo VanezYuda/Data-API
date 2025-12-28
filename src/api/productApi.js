@@ -1,8 +1,8 @@
-import axios from "axios";
+import { apiFetch } from "./apiFetch";
 
 const BASE_URL = "https://dummyjson.com";
 
 export const getProducts = async () => {
-  const response = await axios.get(`${BASE_URL}/products`);
-  return response.data.products;
+  const data = await apiFetch(`${BASE_URL}/products`);
+  return data.products;
 };

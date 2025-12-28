@@ -6,9 +6,16 @@ export default function Home() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    getProducts().then((data) => {
-      setProducts(data);
-    });
+    const fetchData = async () => {
+      try {
+        const data = await getProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error("Gagal mengambil produk:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return <ProductList products={products} />;
